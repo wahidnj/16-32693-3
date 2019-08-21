@@ -11,8 +11,10 @@
 	<a href="{{route('home.add')}}">Add User</a> |
 	<a href="{{route('home.userlist')}}">User List</a> |
 
-	<a href="{{route('home.add_restuarant')}}">Add Restuarant</a> |
+	<a href="{{route('home.add_restuarant')}}"> Add Restuarant</a> |
 	<a href="{{route('home.restuarantlist')}}"> Restuarant List</a> |
+	<a href="{{route('home.add_item')}}"> Add Items</a> |
+	<a href="{{route('home.itemlist')}}"> Items List</a> |
 	<a href="/logout">logout</a>
 
 

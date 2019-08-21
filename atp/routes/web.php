@@ -48,7 +48,11 @@ Route::post('/login', ['uses'=>'LoginController@verify']);
 	Route::get('/home/edit_restuarant/{rid}', 'HomeController@editRestuarant')->name('home.edit_restuarant');
 	Route::post('/home/edit_restuarant/{rid}', 'HomeController@updateRestuarant');
 	Route::get('/home/delete_restuarant/{id}', 'HomeController@deleteRestuarant')->name('home.delete_restuarant');
-	Route::post('/home/delete_restuarant/{id}', 'HomeController@destroyRestuarant');	
+	Route::post('/home/delete_restuarant/{id}', 'HomeController@destroyRestuarant');
+
+	Route::get('/home/add_item', 'HomeController@addItem')->name('home.add_item');
+	Route::post('/home/add_item', 'HomeController@createItem');	
+	Route::get('/home/item', 'HomeController@showItem')->name('home.itemlist');
 	// });
 // });
 

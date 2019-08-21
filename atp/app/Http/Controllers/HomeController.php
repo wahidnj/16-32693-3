@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Users;
+use App\Menus;
 use App\Restuarant;
 
 use Validator;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\RestuarantRequest;
+use App\Http\Requests\MenuRequest;
 
 class HomeController extends Controller
 {
@@ -202,6 +204,38 @@ class HomeController extends Controller
 
         Restuarant::destroy($rid);
         return redirect()->route('home.restuarantlist');
+    }
+
+
+    public function addItem(){
+        return view('home.add_item');
+    }
+
+    public function createItem(MenuRequest $req){
+
+
+        $menus = new Menus();
+       
+        
+        $menus->rname = $req->rname;
+        $menus->mname = $req->mname;
+      
+        $menus->price = $req->price;
+        $menus->details = $req->details;
+       
+        
+        $menus->save();
+
+        //$data = User::where('uname', $req->uname)->where('password', $req->password)->get();
+        return redirect()->route('home.itemlist');
+    }
+
+    public function showItem(){
+
+        $menus = Menus::all();
+
+        //return json($stdlist);
+        return view('home.item', ['menus'=> $menus]);
     }
     
 
