@@ -18,7 +18,7 @@ class HomeController extends Controller
 
 
     public function foodBlog(Request $req){
-        return view('home.page');
+        return view('main.index');
     }
 
     
@@ -47,7 +47,7 @@ class HomeController extends Controller
     	$users->save();
 
     	//$data = User::where('uname', $req->uname)->where('password', $req->password)->get();
-    	return redirect()->route('home.userlist');
+    	echo "Registered Succesful" ;
     }
 
 	public function details(){

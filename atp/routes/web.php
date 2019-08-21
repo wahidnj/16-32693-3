@@ -11,24 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/abc', function () {
-    return view('test');
-});
+   
 
 //Route::get('/login', 'LoginController@index');
-Route::get('/login', ['as'=>'login.index','uses'=>'LoginController@index']);
-Route::post('/login', ['uses'=>'LoginController@verify']);
+  Route::get('/login', ['as'=>'login.index','uses'=>'LoginController@index']);
+  Route::post('/login', ['uses'=>'LoginController@verify']);
 
+  Route::get('/home/add', 'HomeController@addUser')->name('home.add');
+	Route::post('/home/add', 'HomeController@createUser');
 
- Route::group(['middleware'=>['sess']], function(){
+  Route::get('/main', 'HomeController@foodBlog')->name('main.index');
+  
+
+  Route::group(['middleware'=>['sess']], function(){
 
 	Route::get('/home', 'HomeController@index')->name('home.index');
 
-	Route::get('/home/page', 'HomeController@foodBlog')->name('home.page');
+	
 
 	Route::get('/home/member', 'HomeController@showMember')->name('home.member');
 	Route::get('/home/member_item/{rname}', 'HomeController@showResItem')->name('home.member_item');
@@ -40,8 +39,7 @@ Route::post('/login', ['uses'=>'LoginController@verify']);
 	Route::get('/home/details', 'HomeController@details')->name('home.details');
 	// Route::get('/home/search', 'HomeController@viewsearch')->name('home.search');
 	// Route::post('/home/details', 'HomeController@search');
-	Route::get('/home/add', 'HomeController@addUser')->name('home.add');
-	Route::post('/home/add', 'HomeController@createUser');
+	
 	Route::get('/home/delete/{id}', 'HomeController@deleteUser')->name('home.delete');
 	Route::post('/home/delete/{id}', 'HomeController@destroyUser');	
 
@@ -71,9 +69,8 @@ Route::post('/login', ['uses'=>'LoginController@verify']);
 
 	
 
-	
-	// });
- });
+	});
+ // });
 
 
 
