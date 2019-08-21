@@ -23,7 +23,7 @@
   Route::get('/main', 'HomeController@foodBlog')->name('main.index');
   
 
-  Route::group(['middleware'=>['sess']], function(){
+     Route::group(['middleware'=>['sess']], function(){
 
 	Route::get('/home', 'HomeController@index')->name('home.index');
 
@@ -65,7 +65,16 @@
 	
     Route::post('/home/search_restuarant', 'HomeController@searchRestuarant');
 
+    Route::get('/home/food_review', 'HomeController@reviewPage')->name('home.food_review');
+    Route::get('/home/comment/{rname}', 'HomeController@viewComment')->name('home.comment');
+    Route::post('/home/comment/{rname}', 'HomeController@saveComment');
 
+
+   Route::get('/home/review_list', 'HomeController@showReview')->name('home.review_list');
+
+
+   Route::get('/home/delete_review/{serialno}', 'HomeController@deleteReview')->name('home.delete_review');
+   Route::post('/home/delete_review/{serialno}', 'HomeController@destroyReview');
 
 	
 

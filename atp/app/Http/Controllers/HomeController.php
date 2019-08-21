@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Users;
 use App\Menus;
 use App\Restuarant;
+use App\Review;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Http\Requests\UserRequest;
@@ -270,7 +271,54 @@ class HomeController extends Controller
         return view('home.member_item', ['restuarant'=> $restuarant]);
     }
    
+     public function reviewPage(){
 
+        $restuarant = Restuarant::all();
+        $menus = Menus::all();
+        
+        return view('home.food_review', ['restuarant'=> $restuarant],['menus'=> $menus]);
+    }
+
+
+     public function viewComment($rname){
+
+        $restuarant = Restuarant::find($rname);
+        return view('home.comment', ['restuarant'=>$restuarant]);
+    }
+
+    public function saveComment(Request $req,$rname){
+
+        $review = new Review();
+         
+        $review->uname= "Jamir";
+        $review->rname = $rname;
+        $review->comment = $req->comment;
+   
+        $review->save();
+
+        return redirect()->route('home.member');
+    }
+
+     public function showReview(){
+
+        $review = Review::all();
+      
+        
+        return view('home.review_list', ['review'=> $review]);
+    }
+
+
+    public function deleteReview($serialno){
+
+        $review = Review::find($serialno);
+        return view('home.delete_review', ['review'=>$review]);
+    }
+
+    public function destroyReview($serialno){
+
+        Review::destroy($serialno);
+        return redirect()->route('home.review_list');
+    }
     
 
     

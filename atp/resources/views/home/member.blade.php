@@ -9,6 +9,7 @@
   <h1>Welcome Member</h1>
 
   <a href="{{route('home.search_restuarant')}}">Search Restuarants</a> |
+  <a href="{{route('home.food_review')}}">Food Expertise</a> |
   <a href="/logout">logout</a>
 
   <h2>View Restuarants to see their food items</h2>
