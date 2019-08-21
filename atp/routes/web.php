@@ -27,6 +27,11 @@ Route::post('/login', ['uses'=>'LoginController@verify']);
 // Route::group(['middleware'=>['sess']], function(){
 
 	Route::get('/home', 'HomeController@index')->name('home.index');
+
+	Route::get('/home/page', 'HomeController@foodBlog')->name('home.page');
+
+	Route::get('/home/member', 'HomeController@showMember')->name('home.member');
+	Route::get('/home/member_item/{rname}', 'HomeController@showResItem')->name('home.member_item');
 	
 
 	Route::get('/home/userlist', 'HomeController@showUser')->name('home.userlist');
@@ -53,6 +58,10 @@ Route::post('/login', ['uses'=>'LoginController@verify']);
 	Route::get('/home/add_item', 'HomeController@addItem')->name('home.add_item');
 	Route::post('/home/add_item', 'HomeController@createItem');	
 	Route::get('/home/item', 'HomeController@showItem')->name('home.itemlist');
+	Route::get('/home/edit_item/{mid}', 'HomeController@editItem')->name('home.edit_item');
+	Route::post('/home/edit_item/{mid}', 'HomeController@updateItem');
+	Route::get('/home/delete_item/{mid}', 'HomeController@deleteItem')->name('home.delete_item');
+	Route::post('/home/delete_item/{mid}', 'HomeController@destroyItem');
 	// });
 // });
 

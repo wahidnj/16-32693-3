@@ -5,10 +5,8 @@
 </head>
 <body>
 
-	<h2>Item List:</h2>
+	<h2>Restuarant Items:</h2>
 	
-	<a href="/home">Back</a> |
-	<a href="/logout">logout</a>
 
 	<table border="1">
 		<tr>
@@ -18,7 +16,7 @@
 			<td>Price</td>
 			<td>Description</td>
 			
-			<td>Action</td>
+			
 
 		</tr>
 		@foreach($menus as $value)
@@ -29,10 +27,7 @@
 			<td>{{$value['mname']}}</td>
 			<td>{{$value['price']}}</td>
 			<td>{{$value['details']}}</td>
-			<td>
-				<a href="{{route('home.edit_item', $value['mid'])}}">Edit</a> |
-				<a href="{{route('home.delete_item', $value['mid'])}}">Delete</a> 
-			</td>
+			
 		</tr>
 		@endforeach
 

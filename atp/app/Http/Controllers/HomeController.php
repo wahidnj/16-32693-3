@@ -16,6 +16,13 @@ class HomeController extends Controller
 {
 
 
+
+    public function foodBlog(Request $req){
+        return view('home.page');
+    }
+
+    
+
     public function index(Request $req){
 		return view('home.index');
 	}
@@ -25,42 +32,7 @@ class HomeController extends Controller
     }
 
     public function createUser(UserRequest $req){
-
-/*        $this->validate($req, [
-
-            "uname"     => "required | unique:users,username",
-            "password"  => "required|min:8",
-            "name"      => "required",
-            "dept"      => "required",
-            "cgpa"      => "required"
-        ]);*/
-
-/*        $req->validate([
-
-            "uname"     => "required | unique:users,username",
-            "password"  => "required|min:8",
-            "name"      => "required",
-            "dept"      => "required",
-            "cgpa"      => "required"
-        ]);*/
-
-/*        $validator = Validator::make($req->all(), [
-
-            "uname"     => "required | unique:users,username",
-            "password"  => "required|min:8",
-            "name"      => "required",
-            "dept"      => "required",
-            "cgpa"      => "required"
-        ])->validate();*/
-        
-        //$validator->validate();
-
-        /*if($validator->fails()){
-
-            //dd($validator);
-            return back()
-                    ->with('errors', $validator->errors());
-        } */     
+   
 
     	$users = new Users();
        
@@ -173,6 +145,14 @@ class HomeController extends Controller
         return view('home.restuarant', ['restuarant'=> $restuarant]);
     }
 
+    public function showMember(){
+
+        $restuarant = Restuarant::all();
+
+        //return json($stdlist);
+        return view('home.member', ['restuarant'=> $restuarant]);
+    }
+
     public function editRestuarant($rid){
 
         $restuarant = Restuarant::find($rid);
@@ -237,7 +217,49 @@ class HomeController extends Controller
         //return json($stdlist);
         return view('home.item', ['menus'=> $menus]);
     }
+
+
+     public function editItem($mid){
+
+        $menus = Menus::find($mid);
+        return view('home.edit_item', ['menus'=>$menus]);
+    }
+
+    public function updateItem(Request $req, $mid){
+
+        $menus = Menus::find($mid);
+
+        $menus->rname = $req->rname;
+        $menus->mname = $req->mname;
+      
+        $menus->price = $req->price;
+        $menus->details = $req->details;
+   
+        $menus->save();
+
+        return redirect()->route('home.itemlist');
+    }
+
+    public function deleteItem($mid){
+
+        $menus = Menus::find($mid);
+        return view('home.delete_item', ['menus'=>$menus]);
+    }
+
+    public function destroyItem($mid){
+
+        Menus::destroy($mid);
+        return redirect()->route('home.itemlist');
+    }
     
+
+    public function showResItem($rname){
+
+        $menus = Menus::where('rname',$rname)->get();
+
+        //return json($stdlist);
+        return view('home.member_item', ['menus'=> $menus]);
+    }
 
     
 
