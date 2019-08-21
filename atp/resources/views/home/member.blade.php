@@ -8,6 +8,9 @@
 
   <h1>Welcome Member</h1>
 
+  <a href="{{route('home.search_restuarant')}}">Search Restuarants</a> |
+  <a href="/logout">logout</a>
+
   <h2>View Restuarants to see their food items</h2>
 
   <h3 align="center">Restuarant List</h3>

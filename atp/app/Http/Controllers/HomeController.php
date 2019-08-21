@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Users;
 use App\Menus;
 use App\Restuarant;
-
+use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\RestuarantRequest;
@@ -257,9 +257,19 @@ class HomeController extends Controller
 
         $menus = Menus::where('rname',$rname)->get();
 
-        //return json($stdlist);
+       
         return view('home.member_item', ['menus'=> $menus]);
     }
+
+
+    public function searchRestuarant(Request $req){
+
+        $restuarant = Restuarant::where('rname',$req->rname)->get();
+
+    
+        return view('home.member_item', ['restuarant'=> $restuarant]);
+    }
+   
 
     
 

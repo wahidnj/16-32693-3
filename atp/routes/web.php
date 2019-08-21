@@ -24,7 +24,7 @@ Route::get('/login', ['as'=>'login.index','uses'=>'LoginController@index']);
 Route::post('/login', ['uses'=>'LoginController@verify']);
 
 
-// Route::group(['middleware'=>['sess']], function(){
+ Route::group(['middleware'=>['sess']], function(){
 
 	Route::get('/home', 'HomeController@index')->name('home.index');
 
@@ -62,8 +62,18 @@ Route::post('/login', ['uses'=>'LoginController@verify']);
 	Route::post('/home/edit_item/{mid}', 'HomeController@updateItem');
 	Route::get('/home/delete_item/{mid}', 'HomeController@deleteItem')->name('home.delete_item');
 	Route::post('/home/delete_item/{mid}', 'HomeController@destroyItem');
+	
+	Route::get('/home/search_restuarant', 'HomeController@searchRestuarant')->name('home.search_restuarant');
+	
+    Route::post('/home/search_restuarant', 'HomeController@searchRestuarant');
+
+
+
+	
+
+	
 	// });
-// });
+ });
 
 
 

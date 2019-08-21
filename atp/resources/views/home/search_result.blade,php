@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Details</title>
+</head>
+<body>
+
+	<h2>Search Details</h2>
+
+	
+	<a href="/logout">logout</a>
+
+<table border="0">
+		<tr>
+			<td>Restuarant Id :</td>
+			<td>{{$restuarant['rid']}}</td>
+		</tr>
+		<tr>
+			<td> Restuarant Name:</td>
+			<td>{{$restuarant['rname']}}</td>
+		</tr>
+		<tr>
+			<td>Location:</td>
+			<td>{{$restuarant['location']}}</td>
+		</tr>
+		<tr>
+			<td>Area :</td>
+			<td>{{$restuarant['area']}}</td>
+		</tr>
+		<tr>
+			<td>Goals :</td>
+			<td>
+				{{$restuarant['goals']}}
+			</td>
+		</tr>
+</table>
+</body>
+</html>
